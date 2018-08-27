@@ -91,11 +91,16 @@ build_triplet = @build@
 host_triplet = @host@
 bin_PROGRAMS = rmw$(EXEEXT)
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/m4/gettext.m4 \
-	$(top_srcdir)/m4/iconv.m4 $(top_srcdir)/m4/intlmacosx.m4 \
-	$(top_srcdir)/m4/lib-ld.m4 $(top_srcdir)/m4/lib-link.m4 \
-	$(top_srcdir)/m4/lib-prefix.m4 $(top_srcdir)/m4/nls.m4 \
-	$(top_srcdir)/m4/po.m4 $(top_srcdir)/m4/progtest.m4 \
+am__aclocal_m4_deps = $(top_srcdir)/m4/00gnulib.m4 \
+	$(top_srcdir)/m4/extensions.m4 \
+	$(top_srcdir)/m4/extern-inline.m4 $(top_srcdir)/m4/fcntl-o.m4 \
+	$(top_srcdir)/m4/fpieee.m4 $(top_srcdir)/m4/gettext.m4 \
+	$(top_srcdir)/m4/gnulib-common.m4 \
+	$(top_srcdir)/m4/gnulib-comp.m4 $(top_srcdir)/m4/iconv.m4 \
+	$(top_srcdir)/m4/intlmacosx.m4 $(top_srcdir)/m4/lib-ld.m4 \
+	$(top_srcdir)/m4/lib-link.m4 $(top_srcdir)/m4/lib-prefix.m4 \
+	$(top_srcdir)/m4/nls.m4 $(top_srcdir)/m4/po.m4 \
+	$(top_srcdir)/m4/progtest.m4 $(top_srcdir)/m4/threadlib.m4 \
 	$(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
@@ -107,11 +112,20 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
+am__dirstamp = $(am__leading_dot)dirstamp
 am_rmw_OBJECTS = rmw.$(OBJEXT) restore_rmw.$(OBJEXT) \
 	config_rmw.$(OBJEXT) trivial_rmw.$(OBJEXT) \
 	strings_rmw.$(OBJEXT) purging_rmw.$(OBJEXT) \
 	messages_rmw.$(OBJEXT) trashinfo_rmw.$(OBJEXT) \
-	utils_rmw.$(OBJEXT)
+	utils_rmw.$(OBJEXT) coreutils/progname.$(OBJEXT) \
+	coreutils/closein.$(OBJEXT) coreutils/argmatch.$(OBJEXT) \
+	coreutils/freadahead.$(OBJEXT) \
+	coreutils/close-stream.$(OBJEXT) coreutils/closeout.$(OBJEXT) \
+	coreutils/quotearg.$(OBJEXT) coreutils/xmalloc.$(OBJEXT) \
+	coreutils/xalloc-die.$(OBJEXT) \
+	coreutils/localcharset.$(OBJEXT) coreutils/exitfail.$(OBJEXT) \
+	coreutils/yesno.$(OBJEXT) coreutils/root-dev-ino.$(OBJEXT) \
+	coreutils/version-etc.$(OBJEXT) coreutils/rm.$(OBJEXT)
 rmw_OBJECTS = $(am_rmw_OBJECTS)
 rmw_DEPENDENCIES =
 AM_V_P = $(am__v_P_@AM_V@)
@@ -175,6 +189,8 @@ DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 ACLOCAL = @ACLOCAL@
 AMTAR = @AMTAR@
 AM_DEFAULT_VERBOSITY = @AM_DEFAULT_VERBOSITY@
+AR = @AR@
+ARFLAGS = @ARFLAGS@
 AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
 AUTOMAKE = @AUTOMAKE@
@@ -227,6 +243,7 @@ PACKAGE_URL = @PACKAGE_URL@
 PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 POSUB = @POSUB@
+RANLIB = @RANLIB@
 SED = @SED@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
@@ -240,6 +257,7 @@ abs_builddir = @abs_builddir@
 abs_srcdir = @abs_srcdir@
 abs_top_builddir = @abs_top_builddir@
 abs_top_srcdir = @abs_top_srcdir@
+ac_ct_AR = @ac_ct_AR@
 ac_ct_CC = @ac_ct_CC@
 am__include = @am__include@
 am__leading_dot = @am__leading_dot@
@@ -297,7 +315,22 @@ strings_rmw.c 	\
 purging_rmw.c	\
 messages_rmw.c		\
 trashinfo_rmw.c		\
-utils_rmw.c
+utils_rmw.c	\
+coreutils/progname.c	\
+coreutils/closein.c 	\
+coreutils/argmatch.c	\
+coreutils/freadahead.c	\
+coreutils/close-stream.c	\
+coreutils/closeout.c	\
+coreutils/quotearg.c	\
+coreutils/xmalloc.c	\
+coreutils/xalloc-die.c	\
+coreutils/localcharset.c	\
+coreutils/exitfail.c	\
+coreutils/yesno.c	\
+coreutils/root-dev-ino.c	\
+coreutils/version-etc.c	\
+coreutils/rm.c
 
 noinst_HEADERS = \
 rmw.h												\
@@ -405,6 +438,42 @@ uninstall-binPROGRAMS:
 
 clean-binPROGRAMS:
 	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
+coreutils/$(am__dirstamp):
+	@$(MKDIR_P) coreutils
+	@: > coreutils/$(am__dirstamp)
+coreutils/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) coreutils/$(DEPDIR)
+	@: > coreutils/$(DEPDIR)/$(am__dirstamp)
+coreutils/progname.$(OBJEXT): coreutils/$(am__dirstamp) \
+	coreutils/$(DEPDIR)/$(am__dirstamp)
+coreutils/closein.$(OBJEXT): coreutils/$(am__dirstamp) \
+	coreutils/$(DEPDIR)/$(am__dirstamp)
+coreutils/argmatch.$(OBJEXT): coreutils/$(am__dirstamp) \
+	coreutils/$(DEPDIR)/$(am__dirstamp)
+coreutils/freadahead.$(OBJEXT): coreutils/$(am__dirstamp) \
+	coreutils/$(DEPDIR)/$(am__dirstamp)
+coreutils/close-stream.$(OBJEXT): coreutils/$(am__dirstamp) \
+	coreutils/$(DEPDIR)/$(am__dirstamp)
+coreutils/closeout.$(OBJEXT): coreutils/$(am__dirstamp) \
+	coreutils/$(DEPDIR)/$(am__dirstamp)
+coreutils/quotearg.$(OBJEXT): coreutils/$(am__dirstamp) \
+	coreutils/$(DEPDIR)/$(am__dirstamp)
+coreutils/xmalloc.$(OBJEXT): coreutils/$(am__dirstamp) \
+	coreutils/$(DEPDIR)/$(am__dirstamp)
+coreutils/xalloc-die.$(OBJEXT): coreutils/$(am__dirstamp) \
+	coreutils/$(DEPDIR)/$(am__dirstamp)
+coreutils/localcharset.$(OBJEXT): coreutils/$(am__dirstamp) \
+	coreutils/$(DEPDIR)/$(am__dirstamp)
+coreutils/exitfail.$(OBJEXT): coreutils/$(am__dirstamp) \
+	coreutils/$(DEPDIR)/$(am__dirstamp)
+coreutils/yesno.$(OBJEXT): coreutils/$(am__dirstamp) \
+	coreutils/$(DEPDIR)/$(am__dirstamp)
+coreutils/root-dev-ino.$(OBJEXT): coreutils/$(am__dirstamp) \
+	coreutils/$(DEPDIR)/$(am__dirstamp)
+coreutils/version-etc.$(OBJEXT): coreutils/$(am__dirstamp) \
+	coreutils/$(DEPDIR)/$(am__dirstamp)
+coreutils/rm.$(OBJEXT): coreutils/$(am__dirstamp) \
+	coreutils/$(DEPDIR)/$(am__dirstamp)
 
 rmw$(EXEEXT): $(rmw_OBJECTS) $(rmw_DEPENDENCIES) $(EXTRA_rmw_DEPENDENCIES) 
 	@rm -f rmw$(EXEEXT)
@@ -412,6 +481,7 @@ rmw$(EXEEXT): $(rmw_OBJECTS) $(rmw_DEPENDENCIES) $(EXTRA_rmw_DEPENDENCIES)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
+	-rm -f coreutils/*.$(OBJEXT)
 
 distclean-compile:
 	-rm -f *.tab.c
@@ -425,6 +495,21 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/trashinfo_rmw.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/trivial_rmw.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/utils_rmw.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/argmatch.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/close-stream.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/closein.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/closeout.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/exitfail.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/freadahead.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/localcharset.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/progname.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/quotearg.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/rm.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/root-dev-ino.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/version-etc.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/xalloc-die.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/xmalloc.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/yesno.Po@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
@@ -557,6 +642,8 @@ clean-generic:
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
+	-rm -f coreutils/$(DEPDIR)/$(am__dirstamp)
+	-rm -f coreutils/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -566,7 +653,7 @@ clean: clean-am
 clean-am: clean-binPROGRAMS clean-generic mostlyclean-am
 
 distclean: distclean-am
-	-rm -rf ./$(DEPDIR)
+	-rm -rf ./$(DEPDIR) coreutils/$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-hdr distclean-tags
@@ -612,7 +699,7 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-	-rm -rf ./$(DEPDIR)
+	-rm -rf ./$(DEPDIR) coreutils/$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

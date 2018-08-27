@@ -40,3 +40,6 @@ purge (const short purge_after, const struct waste_containers *waste,
 short
 orphan_maint(struct waste_containers *waste,
               char *time_now, char *time_str_appended);
+
+int
+rmdir_recursive (int argc, char **argv);

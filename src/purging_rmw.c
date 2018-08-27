@@ -30,7 +30,7 @@
 #include "utils_rmw.h"
 #include "trashinfo_rmw.h"
 
-static int rmdir_recursive (char *path, short unsigned level, const ushort force)
+/* static int rmdir_recursive (char *path, short unsigned level, const ushort force)
 {
   if (level == RMDIR_MAX_DEPTH)
     return MAX_DEPTH_REACHED;
@@ -72,7 +72,7 @@ static int rmdir_recursive (char *path, short unsigned level, const ushort force
     {
       if (!chmod (dir_path, 00700))
       {
-        /* Now that the mode has changed, lstat must be run again */
+        /* Now that the mode has changed, lstat must be run again *//*
         lstat (dir_path, &st);
       }
       else
@@ -86,7 +86,7 @@ static int rmdir_recursive (char *path, short unsigned level, const ushort force
         * know what to do next if that happens. Right now, the program
         * will continue as normal, with the warning message about
         * permissions
-        */
+        *//*
       }
     }
 
@@ -148,7 +148,7 @@ static int rmdir_recursive (char *path, short unsigned level, const ushort force
   }
 
   return status;
-}
+} */
 
 int
 purge (const short purge_after, const struct waste_containers *waste,
@@ -300,7 +300,8 @@ purge (const short purge_after, const struct waste_containers *waste,
 
         if (S_ISDIR (st.st_mode))
         {
-          status = rmdir_recursive (purgeFile, 1, force);
+          char *params[] = { purgeFile, "-rfvi" };
+          status = rmdir_recursive (2, params);
           switch (status)
           {
           case NOT_WRITEABLE:

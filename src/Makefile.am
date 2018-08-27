@@ -9,7 +9,22 @@ strings_rmw.c 	\
 purging_rmw.c	\
 messages_rmw.c		\
 trashinfo_rmw.c		\
-utils_rmw.c
+utils_rmw.c	\
+coreutils/progname.c	\
+coreutils/closein.c 	\
+coreutils/argmatch.c	\
+coreutils/freadahead.c	\
+coreutils/close-stream.c	\
+coreutils/closeout.c	\
+coreutils/quotearg.c	\
+coreutils/xmalloc.c	\
+coreutils/xalloc-die.c	\
+coreutils/localcharset.c	\
+coreutils/exitfail.c	\
+coreutils/yesno.c	\
+coreutils/root-dev-ino.c	\
+coreutils/version-etc.c	\
+coreutils/rm.c
 
 noinst_HEADERS = 						\
 rmw.h												\
