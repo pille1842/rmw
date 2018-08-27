@@ -19,7 +19,7 @@
 #ifndef _GL_HEADER_OPENAT
 #define _GL_HEADER_OPENAT
 
-#include <fcntl.h>
+#include "fcntl.h"
 
 #include <sys/types.h>
 #include <sys/stat.h>

@@ -97,6 +97,10 @@
 /* Define to the version of this package. */
 #undef PACKAGE_VERSION
 
+/* Define to the type that is the result of default argument promotions of
+   type mode_t. */
+#undef PROMOTED_MODE_T
+
 /* Define to 1 if you have the ANSI C header files. */
 #undef STDC_HEADERS
 
@@ -311,6 +315,9 @@
 #if defined __APPLE__ && defined __MACH__ && __APPLE_CC__ >= 5465 && !defined __cplusplus && __STDC_VERSION__ >= 199901L && !defined __GNUC_STDC_INLINE__
 # define __GNUC_STDC_INLINE__ 1
 #endif
+
+/* Define to `int' if <sys/types.h> does not define. */
+#undef mode_t
 
 /* Define as a marker that can be attached to declarations that might not
     be used.  This helps to reduce warnings, such as from

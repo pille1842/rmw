@@ -99,9 +99,9 @@ am__aclocal_m4_deps = $(top_srcdir)/m4/00gnulib.m4 \
 	$(top_srcdir)/m4/gnulib-comp.m4 $(top_srcdir)/m4/iconv.m4 \
 	$(top_srcdir)/m4/intlmacosx.m4 $(top_srcdir)/m4/lib-ld.m4 \
 	$(top_srcdir)/m4/lib-link.m4 $(top_srcdir)/m4/lib-prefix.m4 \
-	$(top_srcdir)/m4/nls.m4 $(top_srcdir)/m4/po.m4 \
-	$(top_srcdir)/m4/progtest.m4 $(top_srcdir)/m4/threadlib.m4 \
-	$(top_srcdir)/configure.ac
+	$(top_srcdir)/m4/mode_t.m4 $(top_srcdir)/m4/nls.m4 \
+	$(top_srcdir)/m4/po.m4 $(top_srcdir)/m4/progtest.m4 \
+	$(top_srcdir)/m4/threadlib.m4 $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 DIST_COMMON = $(srcdir)/Makefile.am $(noinst_HEADERS) \
@@ -126,7 +126,11 @@ am_rmw_OBJECTS = rmw.$(OBJEXT) restore_rmw.$(OBJEXT) \
 	coreutils/localcharset.$(OBJEXT) coreutils/exitfail.$(OBJEXT) \
 	coreutils/yesno.$(OBJEXT) coreutils/root-dev-ino.$(OBJEXT) \
 	coreutils/version-etc.$(OBJEXT) coreutils/remove.$(OBJEXT) \
-	coreutils/rm.$(OBJEXT)
+	coreutils/openat.$(OBJEXT) coreutils/file-type.$(OBJEXT) \
+	coreutils/save-cwd.$(OBJEXT) coreutils/chdir-long.$(OBJEXT) \
+	coreutils/cloexec.$(OBJEXT) coreutils/xfts.$(OBJEXT) \
+	coreutils/write-any-file.$(OBJEXT) \
+	coreutils/openat-proc.$(OBJEXT) coreutils/rm.$(OBJEXT)
 rmw_OBJECTS = $(am_rmw_OBJECTS)
 rmw_DEPENDENCIES =
 AM_V_P = $(am__v_P_@AM_V@)
@@ -332,6 +336,14 @@ coreutils/yesno.c	\
 coreutils/root-dev-ino.c	\
 coreutils/version-etc.c	\
 coreutils/remove.c	\
+coreutils/openat.c	\
+coreutils/file-type.c	\
+coreutils/save-cwd.c	\
+coreutils/chdir-long.c	\
+coreutils/cloexec.c	\
+coreutils/xfts.c	\
+coreutils/write-any-file.c	\
+coreutils/openat-proc.c	\
 coreutils/rm.c
 
 noinst_HEADERS = \
@@ -476,6 +488,22 @@ coreutils/version-etc.$(OBJEXT): coreutils/$(am__dirstamp) \
 	coreutils/$(DEPDIR)/$(am__dirstamp)
 coreutils/remove.$(OBJEXT): coreutils/$(am__dirstamp) \
 	coreutils/$(DEPDIR)/$(am__dirstamp)
+coreutils/openat.$(OBJEXT): coreutils/$(am__dirstamp) \
+	coreutils/$(DEPDIR)/$(am__dirstamp)
+coreutils/file-type.$(OBJEXT): coreutils/$(am__dirstamp) \
+	coreutils/$(DEPDIR)/$(am__dirstamp)
+coreutils/save-cwd.$(OBJEXT): coreutils/$(am__dirstamp) \
+	coreutils/$(DEPDIR)/$(am__dirstamp)
+coreutils/chdir-long.$(OBJEXT): coreutils/$(am__dirstamp) \
+	coreutils/$(DEPDIR)/$(am__dirstamp)
+coreutils/cloexec.$(OBJEXT): coreutils/$(am__dirstamp) \
+	coreutils/$(DEPDIR)/$(am__dirstamp)
+coreutils/xfts.$(OBJEXT): coreutils/$(am__dirstamp) \
+	coreutils/$(DEPDIR)/$(am__dirstamp)
+coreutils/write-any-file.$(OBJEXT): coreutils/$(am__dirstamp) \
+	coreutils/$(DEPDIR)/$(am__dirstamp)
+coreutils/openat-proc.$(OBJEXT): coreutils/$(am__dirstamp) \
+	coreutils/$(DEPDIR)/$(am__dirstamp)
 coreutils/rm.$(OBJEXT): coreutils/$(am__dirstamp) \
 	coreutils/$(DEPDIR)/$(am__dirstamp)
 
@@ -500,19 +528,27 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/trivial_rmw.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/utils_rmw.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/argmatch.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/chdir-long.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/cloexec.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/close-stream.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/closein.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/closeout.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/exitfail.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/file-type.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/freadahead.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/localcharset.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/openat-proc.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/openat.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/progname.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/quotearg.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/remove.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/rm.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/root-dev-ino.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/save-cwd.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/version-etc.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/write-any-file.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/xalloc-die.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/xfts.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/xmalloc.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@coreutils/$(DEPDIR)/yesno.Po@am__quote@
 

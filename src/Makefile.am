@@ -25,6 +25,14 @@ coreutils/yesno.c	\
 coreutils/root-dev-ino.c	\
 coreutils/version-etc.c	\
 coreutils/remove.c	\
+coreutils/openat.c	\
+coreutils/file-type.c	\
+coreutils/save-cwd.c	\
+coreutils/chdir-long.c	\
+coreutils/cloexec.c	\
+coreutils/xfts.c	\
+coreutils/write-any-file.c	\
+coreutils/openat-proc.c	\
 coreutils/rm.c
 
 noinst_HEADERS = 						\
