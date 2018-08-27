@@ -17,6 +17,7 @@ AM_MAINTAINER_MODE
 gl_EXTERN_INLINE
 gl_COMMON
 gl_FCNTL_O_FLAGS
+AC_C_FLEXIBLE_ARRAY_MEMBER
 
 AC_CHECK_LIB([curses], [initscr], found_curses=yes, found_curses=no)
 if test "x$found_curses" = xno; then

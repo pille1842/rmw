@@ -1,9 +1,11 @@
-/* prog-fprintf.h - common formating output functions and definitions
-   Copyright (C) 2008-2016 Free Software Foundation, Inc.
+/* Return a string describing the type of a file.
+
+   Copyright (C) 1993-1994, 2001-2002, 2004-2005, 2009-2016 Free Software
+   Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation, either version 3 of the License, or
+   the Free Software Foundation; either version 3 of the License, or
    (at your option) any later version.
 
    This program is distributed in the hope that it will be useful,
@@ -14,12 +16,14 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#ifndef PROG_FPRINTF_H
-# define PROG_FPRINTF_H
+/* Written by Paul Eggert and Jim Meyering.  */
 
-# include <stdio.h>
+#ifndef FILE_TYPE_H
+# define FILE_TYPE_H 1
 
-extern void prog_fprintf (FILE *fp, char const *fmt, ...)
-  __attribute__ ((__format__ (__printf__, 2, 3)));
+# include <sys/types.h>
+# include <sys/stat.h>
 
-#endif
+char const *file_type (struct stat const *) _GL_ATTRIBUTE_PURE;
+
+#endif /* FILE_TYPE_H */

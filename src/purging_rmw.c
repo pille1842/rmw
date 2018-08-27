@@ -30,7 +30,7 @@
 #include "utils_rmw.h"
 #include "trashinfo_rmw.h"
 
-/* static int rmdir_recursive (char *path, short unsigned level, const ushort force)
+/* static int rmdir_recarsive (char *path, short unsigned level, const ushort force)
 {
   if (level == RMDIR_MAX_DEPTH)
     return MAX_DEPTH_REACHED;

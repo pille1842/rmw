@@ -24,6 +24,7 @@ coreutils/exitfail.c	\
 coreutils/yesno.c	\
 coreutils/root-dev-ino.c	\
 coreutils/version-etc.c	\
+coreutils/remove.c	\
 coreutils/rm.c
 
 noinst_HEADERS = 						\

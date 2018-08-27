@@ -292,7 +292,7 @@ rmdir_recursive (int argc, char **argv)
         return EXIT_SUCCESS;
     }
 
-  enum RM_status status = rmdir_recursive (file, &x);
+  enum RM_status status = rm (file, &x);
   assert (VALID_STATUS (status));
   return status == RM_ERROR ? EXIT_FAILURE : EXIT_SUCCESS;
 }
